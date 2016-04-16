@@ -48,6 +48,7 @@ typedef void (^CZDismissCompletionCallback)(void);
         self.tapBackgroundToDismiss = YES;
         self.needFooterView = NO;
         self.allowMultipleSelection = NO;
+        self.cancelSameCellSelection = YES;
         self.animationDuration = 0.5f;
         
         self.confirmButtonTitle = confirmButtonTitle;
@@ -362,8 +363,10 @@ typedef void (^CZDismissCompletionCallback)(void);
                 [self.selectedIndexPaths removeObject:prevIp];
                 [self.selectedIndexPaths addObject:indexPath];
             } else {//same cell
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                self.selectedIndexPaths = [NSMutableArray new];
+                if(self.cancelSameCellSelection){
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    self.selectedIndexPaths = [NSMutableArray new];
+                }
             }
         } else {//no selection
             [self.selectedIndexPaths addObject:indexPath];

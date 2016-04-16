@@ -89,6 +89,9 @@
  property is YES, then footerView will be shown */
 @property BOOL allowMultipleSelection;
 
+/** whether cancel selection of same cell, default YES */
+@property BOOL cancelSameCellSelection;
+
 /** picker header background color */
 @property (nonatomic, strong) UIColor *headerBackgroundColor;
 
